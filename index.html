@@ -44,7 +44,7 @@
   @keyframes cartPop { 0% { transform: scale(1); } 35% { transform: scale(1.5); } 70% { transform: scale(.9); } 100% { transform: scale(1); } }
   .cart-count { display: inline-block; }
   .cart-count.pop { animation: cartPop .45s cubic-bezier(.22,.61,.36,1); }
-  .card-plus { position: absolute; bottom: 14px; right: 14px; width: 46px; height: 46px; border-radius: 50%; background: rgba(74,58,66,.82); backdrop-filter: blur(3px); color: #f3ece6; display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 400; line-height: 1; opacity: 0; transform: translateY(8px) scale(.9); transition: opacity .32s ease, transform .32s cubic-bezier(.22,.61,.36,1); pointer-events: none; }
+  .card-plus { position: absolute; bottom: 14px; right: 14px; width: 46px; height: 46px; border-radius: 50%; background: rgba(74,58,66,.82); backdrop-filter: blur(3px); color: #f3ece6; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 400; line-height: 1; opacity: 0; transform: translateY(8px) scale(.9); transition: opacity .32s ease, transform .32s cubic-bezier(.22,.61,.36,1); pointer-events: none; }
   .card-media:hover .card-plus { opacity: 1; transform: translateY(0) scale(1); }
   .drawer-overlay { position: fixed; inset: 0; background: rgba(35,25,30,.42); opacity: 0; pointer-events: none; transition: opacity .35s ease; z-index: 90; }
   .drawer-overlay.open { opacity: 1; pointer-events: auto; }
@@ -129,7 +129,7 @@
   .rev-clone { display: none !important; }
   @media (max-width: 680px) {
     .rev-wrap { overflow: hidden; }
-    .g-reviews { display: flex !important; flex-wrap: nowrap !important; width: auto !important; gap: 0 !important; overflow-x: auto; scrollbar-width: none; margin: 0 -22px; padding: 0 22px; -webkit-overflow-scrolling: touch; }
+    .g-reviews { display: flex !important; flex-wrap: nowrap !important; width: auto !important; gap: 0 !important; overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; touch-action: pan-x pan-y; scrollbar-width: none; margin: 0 -22px; padding: 0 22px; -webkit-overflow-scrolling: touch; }
     .g-reviews::-webkit-scrollbar { display: none; }
     .g-reviews figure { flex: 0 0 80vw !important; width: 80vw !important; margin-right: 16px !important; }
     .rev-clone { display: flex !important; }
@@ -154,7 +154,7 @@
     #kolekcija > div:last-child { display: none !important; }
     .car-progress { display: flex !important; }
     #kolekcija .g-cards > .card-more { display: flex !important; flex: 0 0 52%; scroll-snap-align: start; }
-    #kolekcija .g-cards { display: flex !important; overflow-x: auto; scroll-snap-type: x mandatory; gap: 24px !important; padding: 0 22px 8px; scroll-padding: 0 22px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+    #kolekcija .g-cards { display: flex !important; overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; touch-action: pan-x pan-y; scroll-snap-type: x mandatory; gap: 24px !important; padding: 0 22px 8px; scroll-padding: 0 22px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
     #kolekcija .g-cards::-webkit-scrollbar { display: none; }
     #kolekcija .g-cards > article { flex: 0 0 76%; min-width: 0; scroll-snap-align: start; }
     #kolekcija .g-cards article > div:nth-child(3) span { font-family: 'Instrument Sans', system-ui, sans-serif !important; font-size: 14px !important; letter-spacing: 0 !important; text-transform: none !important; color: var(--sub,#75676c) !important; }
@@ -214,7 +214,7 @@
   }
   @media (max-width: 860px) and (prefers-reduced-motion: reduce) { .nav-links > a { opacity: 1 !important; transform: none !important; } }
   @media (max-width: 680px) {
-    input, textarea { font-size: 16px !important; }
+    input, textarea { font-size: 17px !important; }
     .nav-cart { min-height: 44px; padding-top: 0 !important; padding-bottom: 0 !important; }
     .news-form input, .news-form button, .modal-soon input, .modal-soon button[type="submit"] { min-height: 46px; }
     .drawer button[aria-label="Manje"], .drawer button[aria-label="Više"] { width: 40px !important; height: 40px !important; }
@@ -224,6 +224,18 @@
     .foot-links a { padding: 12px 0 !important; }
     .modal-actions { position: sticky; bottom: 0; z-index: 1; background: var(--bg,#f3ece6); margin: 0 -22px -28px !important; padding: 14px 22px 18px; border-top: 1px solid var(--line,#e3d9d3); }
   }
+@media (max-width: 720px) {
+    .modal-overlay { height: 100vh; height: 100dvh; }
+    .modal-card { max-height: calc(100vh - 32px) !important; max-height: calc(100dvh - 32px) !important; }
+    .modal-actions { flex-wrap: nowrap !important; gap: 10px !important; }
+    .modal-actions > div { flex: 0 0 auto; }
+    .modal-card { scrollbar-width: none; }
+    .modal-card::-webkit-scrollbar { display: none; }
+    .modal-actions > div button { width: 36px !important; }
+    .modal-actions > div span { min-width: 20px !important; }
+    .modal-actions > button { flex: 1 1 0 !important; min-width: 0; white-space: nowrap; padding: 14px 12px !important; font-size: 12px !important; gap: 6px !important; min-height: 48px; }
+  }
+  @media (max-width: 400px) { .modal-actions .m-hide { display: none; } }
 </style>
 <title>утишај — ručno izrađene mirisne sveće</title>
 <meta name="description" content="Mirisne sveće od 100% sojinog voska, ručno izrađene u malim serijama u Srbiji. Svaki miris komponovan je kao parfem.">
@@ -665,7 +677,7 @@
               <span style="min-width: 26px; text-align: center; font-family: 'Comfortaa', sans-serif; font-weight: 600; font-size: 14px;">{{ modalQty }}</span>
               <button onClick="{{ incModalQty }}" aria-label="Više" style="cursor: pointer; background: transparent; border: none; color: var(--ink,#4a3a42); width: 40px; height: 44px; font-size: 17px;">+</button>
             </div>
-            <button onClick="{{ addModalToCart }}" style="flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Comfortaa', sans-serif; font-weight: 600; cursor: pointer; background: var(--ink,#4a3a42); color: var(--bg,#f3ece6); border: none; padding: 15px 22px; border-radius: 999px; font-size: 14px; transition: background .3s ease, transform .25s ease;" style-hover="background: var(--accent,#cf4a3e); transform: translateY(-2px);" style-active="transform: translateY(0);">Dodaj u korpu · {{ modalPriceLabel }}</button>
+            <button onClick="{{ addModalToCart }}" style="flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Comfortaa', sans-serif; font-weight: 600; cursor: pointer; background: var(--ink,#4a3a42); color: var(--bg,#f3ece6); border: none; padding: 15px 22px; border-radius: 999px; font-size: 14px; transition: background .3s ease, transform .25s ease;" style-hover="background: var(--accent,#cf4a3e); transform: translateY(-2px);" style-active="transform: translateY(0);">Dodaj<span class="m-hide">&nbsp;u korpu</span> · {{ modalPriceLabel }}</button>
           </div>
         </div>
       </div>
@@ -734,10 +746,23 @@ class Component extends DCLogic {
     window.addEventListener("resize", this._onResize);
     setTimeout(() => this.updCar(), 300);
     this._onScroll = () => {
-      const y = window.scrollY || document.documentElement.scrollTop;
+      const y = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop;
       if ((y > 600) !== this.state.showTop) this.setState({ showTop: y > 600 });
     };
-    window.addEventListener("scroll", this._onScroll, { passive: true });
+    document.addEventListener("scroll", this._onScroll, { capture: true, passive: true });
+    const hid = (location.hash || "").slice(1);
+    if (hid) {
+      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+      const go = () => { const el = document.getElementById(hid); if (!el) return; const b = document.body, sc = b.scrollHeight > b.clientHeight + 4 && getComputedStyle(b).overflowY !== "visible" ? b : document.scrollingElement; sc.scrollTop += el.getBoundingClientRect().top - 70; };
+      let stop = false;
+      const cancel = () => { stop = true; };
+      ["wheel", "touchstart", "keydown", "mousedown"].forEach(ev => window.addEventListener(ev, cancel, { once: true, passive: true }));
+      const run = () => { if (stop) return; const de = document.documentElement; de.style.scrollBehavior = "auto"; document.body.style.scrollBehavior = "auto"; go(); de.style.scrollBehavior = ""; document.body.style.scrollBehavior = ""; };
+      [0, 60, 200, 400, 700, 1100, 1600, 2300, 3000].forEach(t => setTimeout(run, t));
+      window.addEventListener("load", () => { run(); setTimeout(run, 300); }, { once: true });
+      [...document.images].forEach(img => { if (!img.complete) img.addEventListener("load", run, { once: true }); });
+      setTimeout(() => { stop = true; }, 4000);
+    }
   }
   carRef = (el) => { this.carEl = el; this.updCar(); };
   thumbRef = (el) => { this.thumbEl = el; this.updCar(); };
@@ -777,7 +802,7 @@ class Component extends DCLogic {
     cancelAnimationFrame(this._revRaf);
     this._revRaf = requestAnimationFrame(tick);
   };
-  componentWillUnmount() { cancelAnimationFrame(this._revRaf); window.removeEventListener("resize", this._onResize); window.removeEventListener("scroll", this._onScroll); window.removeEventListener("keydown", this._onKey); }
+  componentWillUnmount() { cancelAnimationFrame(this._revRaf); window.removeEventListener("resize", this._onResize); document.removeEventListener("scroll", this._onScroll, { capture: true }); window.removeEventListener("keydown", this._onKey); }
   componentDidUpdate() {
     this.applyTheme();
     const cs = JSON.stringify(this.state.cart);

@@ -44,7 +44,7 @@
   @keyframes cartPop { 0% { transform: scale(1); } 35% { transform: scale(1.5); } 70% { transform: scale(.9); } 100% { transform: scale(1); } }
   .cart-count { display: inline-block; }
   .cart-count.pop { animation: cartPop .45s cubic-bezier(.22,.61,.36,1); }
-  .card-plus { position: absolute; bottom: 14px; right: 14px; width: 46px; height: 46px; border-radius: 50%; background: rgba(74,58,66,.82); backdrop-filter: blur(3px); color: #f3ece6; display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 400; line-height: 1; opacity: 0; transform: translateY(8px) scale(.9); transition: opacity .32s ease, transform .32s cubic-bezier(.22,.61,.36,1); pointer-events: none; }
+  .card-plus { position: absolute; bottom: 14px; right: 14px; width: 46px; height: 46px; border-radius: 50%; background: rgba(74,58,66,.82); backdrop-filter: blur(3px); color: #f3ece6; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 400; line-height: 1; opacity: 0; transform: translateY(8px) scale(.9); transition: opacity .32s ease, transform .32s cubic-bezier(.22,.61,.36,1); pointer-events: none; }
   .card-media:hover .card-plus { opacity: 1; transform: translateY(0) scale(1); }
   .drawer-overlay { position: fixed; inset: 0; background: rgba(35,25,30,.42); opacity: 0; pointer-events: none; transition: opacity .35s ease; z-index: 90; }
   .drawer-overlay.open { opacity: 1; pointer-events: auto; }
@@ -110,7 +110,7 @@
     .g-cards > article > div:nth-child(3) span { border: none !important; padding: 0 !important; white-space: nowrap; word-spacing: -.12em; font-family: 'Instrument Sans', system-ui, sans-serif !important; font-size: 12px !important; letter-spacing: 0 !important; text-transform: none !important; color: var(--sub,#75676c) !important; }
     .g-cards > article > div:nth-child(2) { order: 1; margin-bottom: 3px !important; }
     .g-cards > article > div:nth-child(2) > div:first-child { font-size: 17px !important; line-height: 1.1 !important; }
-    .g-cards > article > div:nth-child(2) > div:first-child span { font-size: 20.5px !important; }
+    .g-cards > article > div:nth-child(2) > div:first-child span { font-size: 20px !important; }
     .g-cards > article > div:nth-child(2) > div:last-child { font-size: 14px !important; margin-top: 2px !important; }
     .g-cards > article > div:last-child { order: 3; border-top: none !important; padding-top: 12px !important; justify-content: space-between !important; }
     .g-cards > article > div:last-child span { font-size: 14px !important; }
@@ -187,7 +187,7 @@
   }
   @media (max-width: 860px) and (prefers-reduced-motion: reduce) { .nav-links > a { opacity: 1 !important; transform: none !important; } }
   @media (max-width: 680px) {
-    input, textarea { font-size: 16px !important; }
+    input, textarea { font-size: 17px !important; }
     .nav-cart { min-height: 44px; padding-top: 0 !important; padding-bottom: 0 !important; }
     .news-form input, .news-form button, .modal-soon input, .modal-soon button[type="submit"] { min-height: 46px; }
     .drawer button[aria-label="Manje"], .drawer button[aria-label="Više"] { width: 40px !important; height: 40px !important; }
@@ -197,6 +197,18 @@
     .foot-links a { padding: 12px 0 !important; }
     .modal-actions { position: sticky; bottom: 0; z-index: 1; background: var(--bg,#f3ece6); margin: 0 -22px -28px !important; padding: 14px 22px 18px; border-top: 1px solid var(--line,#e3d9d3); }
   }
+@media (max-width: 720px) {
+    .modal-overlay { height: 100vh; height: 100dvh; }
+    .modal-card { max-height: calc(100vh - 32px) !important; max-height: calc(100dvh - 32px) !important; }
+    .modal-actions { flex-wrap: nowrap !important; gap: 10px !important; }
+    .modal-actions > div { flex: 0 0 auto; }
+    .modal-card { scrollbar-width: none; }
+    .modal-card::-webkit-scrollbar { display: none; }
+    .modal-actions > div button { width: 36px !important; }
+    .modal-actions > div span { min-width: 20px !important; }
+    .modal-actions > button { flex: 1 1 0 !important; min-width: 0; white-space: nowrap; padding: 14px 12px !important; font-size: 12px !important; gap: 6px !important; min-height: 48px; }
+  }
+  @media (max-width: 400px) { .modal-actions .m-hide { display: none; } }
 </style>
 <title>Kolekcija — утишај</title>
 <meta name="description" content="Mirisne sveće od 100% sojinog voska, ručno izrađene u malim serijama u Srbiji. Svaki miris komponovan je kao parfem.">
@@ -484,7 +496,7 @@
               <span style="min-width: 26px; text-align: center; font-family: 'Comfortaa', sans-serif; font-weight: 600; font-size: 14px;">{{ modalQty }}</span>
               <button onClick="{{ incModalQty }}" aria-label="Više" style="cursor: pointer; background: transparent; border: none; color: var(--ink,#4a3a42); width: 40px; height: 44px; font-size: 17px;">+</button>
             </div>
-            <button onClick="{{ addModalToCart }}" style="flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Comfortaa', sans-serif; font-weight: 600; cursor: pointer; background: var(--ink,#4a3a42); color: var(--bg,#f3ece6); border: none; padding: 15px 22px; border-radius: 999px; font-size: 14px; transition: background .3s ease, transform .25s ease;" style-hover="background: var(--accent,#cf4a3e); transform: translateY(-2px);" style-active="transform: translateY(0);">Dodaj u korpu · {{ modalPriceLabel }}</button>
+            <button onClick="{{ addModalToCart }}" style="flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Comfortaa', sans-serif; font-weight: 600; cursor: pointer; background: var(--ink,#4a3a42); color: var(--bg,#f3ece6); border: none; padding: 15px 22px; border-radius: 999px; font-size: 14px; transition: background .3s ease, transform .25s ease;" style-hover="background: var(--accent,#cf4a3e); transform: translateY(-2px);" style-active="transform: translateY(0);">Dodaj<span class="m-hide">&nbsp;u korpu</span> · {{ modalPriceLabel }}</button>
           </div>
         </div>
       </div>
@@ -509,7 +521,7 @@
       </form>
       </sc-if>
       <sc-if value="{{ soonDone }}" hint-placeholder-val="{{ false }}">
-      <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--accent-text,#b33d32); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 8px auto 20px;">✓</div>
+      <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--accent-text,#b33d32); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 29px; margin: 8px auto 20px;">✓</div>
       <div style="font-family: 'Comfortaa', sans-serif; font-weight: 700; font-size: 24px; line-height: 1.2; margin-bottom: 10px;">Hvala!</div>
       <p style="font-size: 17px; line-height: 1.7; color: var(--text,#6b5d61); margin: 0 auto; max-width: 26em;">Javićemo ti se čim nova sveća bude spremna.</p>
       </sc-if>
@@ -575,12 +587,12 @@ class Component extends DCLogic {
     this._onKey = (e) => { if (e.key === "Escape") this.setState({ modalId: null, drawerOpen: false, mobileOpen: false, soonOpen: false }); };
     window.addEventListener("keydown", this._onKey);
     this._onScroll = () => {
-      const y = window.scrollY || document.documentElement.scrollTop;
+      const y = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop;
       if ((y > 600) !== this.state.showTop) this.setState({ showTop: y > 600 });
     };
-    window.addEventListener("scroll", this._onScroll, { passive: true });
+    document.addEventListener("scroll", this._onScroll, { capture: true, passive: true });
   }
-  componentWillUnmount() { window.removeEventListener("scroll", this._onScroll); window.removeEventListener("keydown", this._onKey); }
+  componentWillUnmount() { document.removeEventListener("scroll", this._onScroll, { capture: true }); window.removeEventListener("keydown", this._onKey); }
   componentDidUpdate() {
     this.applyTheme();
     const cs = JSON.stringify(this.state.cart);
