@@ -148,7 +148,7 @@
   @media (max-width: 860px) {
     .site-nav { display: flex !important; align-items: center; gap: 0 !important; }
     .nav-hamburger { order: -1; }
-    .nav-brand { order: 0; margin: 0 auto !important; }
+    .nav-brand { order: 0; margin: 0 !important; position: absolute; left: 50%; transform: translateX(calc(-50% - 7px)); } .site-nav { position: relative; justify-content: space-between !important; }
     .nav-cart { order: 1; }
   }
   @media (max-width: 680px) { .col-grid { padding-bottom: 64px !important; } .soon-band { margin-top: 40px !important; } }
@@ -209,6 +209,7 @@
     .modal-actions > button { flex: 1 1 0 !important; min-width: 0; white-space: nowrap; padding: 14px 12px !important; font-size: 12px !important; gap: 6px !important; min-height: 48px; }
   }
   @media (max-width: 400px) { .modal-actions .m-hide { display: none; } }
+  @media (min-width: 861px) { .nav-brand { margin-left: -4px !important; } }
 </style>
 <title>Kolekcija — утишај</title>
 <meta name="description" content="Mirisne sveće od 100% sojinog voska, ručno izrađene u malim serijama u Srbiji. Svaki miris komponovan je kao parfem.">
